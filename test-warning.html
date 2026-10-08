@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>V2.6.2 氣象警告顯示測試</title>
+<style>
+body {
+  margin: 0;
+  padding: 24px;
+  background: #202735;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.card {
+  max-width: 780px;
+  margin: auto;
+  padding: 24px;
+  border-radius: 24px;
+  background: #414651;
+}
+.warning {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #b99a59;
+  border-radius: 16px;
+  background: #675e4f;
+  color: #ffe29b;
+}
+.warning div { margin-top: 8px; }
+button {
+  margin: 12px 8px 0 0;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>🌤️ 澳門天氣 — 警告顯示測試</h2>
+  <p>以下全部係模擬資料，並非真實氣象警告。</p>
+
+  <button onclick="showTest()">模擬生效警告</button>
+  <button onclick="hideTest()">模擬沒有警告</button>
+
+  <div id="smg-warning" style="display:none"></div>
+</div>
+
+<script>
+const el = document.getElementById('smg-warning');
+
+function hideTest() {
+  el.replaceChildren();
+  el.style.display = 'none';
+}
+
+function showTest() {
+  hideTest();
+
+  const testData = {
+    display_warnings: true,
+    active_warnings: [{
+      name: '暴雨警告（模擬）',
+      state: 'active',
+      description: '測試用途，並非真實警告。'
+    }]
+  };
+
+  if (!testData.display_warnings) return;
+
+  const active = testData.active_warnings.filter(
+    w => w.state === 'active'
+  );
+
+  if (!active.length) return;
+
+  el.className = 'warning';
+  el.style.display = '';
+
+  const title = document.createElement('strong');
+  title.textContent = '⚠️ 模擬生效氣象警告';
+  el.appendChild(title);
+
+  for (const w of active) {
+    const line = document.createElement('div');
+    line.textContent = '• ' + w.name + '：' + w.description;
+    el.appendChild(line);
+  }
+}
+</script>
+</body>
+</html>
