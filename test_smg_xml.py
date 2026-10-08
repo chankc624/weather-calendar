@@ -3,8 +3,12 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 URLS = {
+    "熱帶氣旋／颱風": "https://xml.smg.gov.mo/c_typhoon.xml",
     "暴雨": "https://xml.smg.gov.mo/c_rainstorm.xml",
+    "強烈季候風": "https://xml.smg.gov.mo/c_monsoon.xml",
     "雷暴": "https://xml.smg.gov.mo/c_thunderstorm.xml",
+    "風暴潮": "https://xml.smg.gov.mo/c_stormsurge.xml",
+    "海嘯": "https://xml.smg.gov.mo/c_tsunami.xml",
 }
 
 for name, url in URLS.items():
