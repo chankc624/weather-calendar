@@ -1,6 +1,6 @@
 {
   "source": "https://rss.smg.gov.mo/c_WSignal_rss.xml",
-  "checked_at": "2026-10-08T02:34:18.500288+00:00",
+  "checked_at": "2026-10-08T02:45:14.594206+00:00",
   "status": "fetched",
   "active_state": "unknown",
   "items": [
@@ -8,5 +8,71 @@
       "title": "澳門於2026年10月04日23時30分發出之天氣警告",
       "published": ""
     }
-  ]
+  ],
+  "xml_checked_at": "2026-10-08T10:45:14.594206+08:00",
+  "warnings": [
+    {
+      "name": "熱帶氣旋／颱風",
+      "source": "https://xml.smg.gov.mo/c_typhoon.xml",
+      "state": "inactive",
+      "status": "0",
+      "inforce": "0",
+      "warncode": "NIL",
+      "issued_at": "2026-09-03 23:00",
+      "description": "現時並沒有熱帶氣旋信號。"
+    },
+    {
+      "name": "暴雨",
+      "source": "https://xml.smg.gov.mo/c_rainstorm.xml",
+      "state": "inactive",
+      "status": "0",
+      "inforce": "0",
+      "warncode": "NIL",
+      "issued_at": "2026-10-04 23:25",
+      "description": "現時沒有暴雨警告信號。"
+    },
+    {
+      "name": "強烈季候風",
+      "source": "https://xml.smg.gov.mo/c_monsoon.xml",
+      "state": "inactive",
+      "status": "0",
+      "inforce": "",
+      "warncode": "",
+      "issued_at": "2026-09-13 14:20",
+      "description": "現時沒有季候風黑球警告。"
+    },
+    {
+      "name": "雷暴",
+      "source": "https://xml.smg.gov.mo/c_thunderstorm.xml",
+      "state": "inactive",
+      "status": "0",
+      "inforce": "",
+      "warncode": "",
+      "issued_at": "2026-10-04 23:30",
+      "description": "現時沒有雷暴警告信號。"
+    },
+    {
+      "name": "風暴潮",
+      "source": "https://xml.smg.gov.mo/c_stormsurge.xml",
+      "state": "inactive",
+      "status": "0",
+      "inforce": "0",
+      "warncode": "NIL",
+      "issued_at": "2025-10-05 13:00",
+      "description": "現時沒有風暴潮警告。"
+    },
+    {
+      "name": "海嘯",
+      "source": "https://xml.smg.gov.mo/c_tsunami.xml",
+      "state": "inactive",
+      "status": "0",
+      "inforce": "0",
+      "warncode": "NIL",
+      "issued_at": "2023-01-17 12:27",
+      "description": "現時沒有海嘯警告信號。"
+    }
+  ],
+  "active_warnings": [],
+  "display_warnings": false,
+  "verification_note": "Active warnings require a recent issued timestamp. Unknown status must not be interpreted as safe."
 }
