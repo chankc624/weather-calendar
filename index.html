@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="dashboard-version" content="2.6"><meta name="theme-color" content="#101820"><title>CHAN Family Dashboard · V2.6</title>
+<meta name="dashboard-version" content="2.6.1"><meta name="theme-color" content="#101820"><title>CHAN Family Dashboard · V2.6.1</title>
 <style>
 :root{color-scheme:dark;--gold:#ffd46c;--glass:rgba(11,20,35,.69)}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07111d;color:#fff;font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif}#photos,.shade{position:fixed;inset:0}#photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity 1.6s ease;transform:scale(1.015)}#photos img.active{opacity:1}.shade{background:linear-gradient(90deg,rgba(0,0,0,.27),transparent 53%,rgba(0,0,0,.16));pointer-events:none}.app{position:relative;width:100%;height:100%;transition:opacity .35s,transform 8s linear}.app.hidden{opacity:0;pointer-events:none}.clock{position:absolute;left:5%;bottom:6%;text-shadow:0 2px 12px #0009}.clock-time{font-size:clamp(72px,8.3vw,132px);font-weight:250;letter-spacing:1px;line-height:1}.date{font-size:clamp(20px,2.1vw,31px);margin-top:12px;font-weight:500}.lunar{font-size:clamp(15px,1.5vw,22px);opacity:.9;margin-top:6px}.sidebar{position:absolute;right:2.2%;top:4%;bottom:4%;width:clamp(340px,29%,470px);display:flex;flex-direction:column;gap:12px;overflow:auto;scrollbar-width:none}.sidebar::-webkit-scrollbar{display:none}.card{background:var(--glass);border:1px solid #ffffff24;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border-radius:20px;padding:16px 19px;box-shadow:0 6px 20px #0002}.heading{display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;margin-bottom:10px}.muted{font-size:12px;opacity:.72}.weather-top{display:flex;align-items:center;gap:14px;margin-bottom:12px}.weather-emoji{font-size:50px}.temp{font-size:50px;font-weight:300;line-height:1}.desc{font-size:14px;opacity:.88;margin-top:5px}.weather-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 15px;font-size:14px}.metric{display:flex;justify-content:space-between;gap:8px}.metric span:first-child{opacity:.73}.forecast{border-top:1px solid #ffffff26;margin-top:13px;padding-top:10px;display:grid;gap:6px}.forecast-row{display:grid;grid-template-columns:1fr 35px 1fr;align-items:center;font-size:14px}.forecast-row span:last-child{text-align:right}.events{display:grid;gap:8px}.event{display:flex;justify-content:space-between;align-items:center;font-size:15px}.event strong{color:var(--gold);font-size:16px}.cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;font-size:17px;font-weight:600}.week,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));text-align:center}.week{font-size:13px;opacity:.72;margin-bottom:8px}.days{gap:4px}.day{font-size:14px;min-height:29px;display:grid;place-items:center;border-radius:9px}.day.other{opacity:.32}.day.today{background:var(--gold);color:#222;font-weight:800}.tip{position:absolute;bottom:1.8%;right:4%;font-size:11px;opacity:.65;transition:opacity .8s}.tip.hide{opacity:0}.night .shade{background:rgba(0,0,0,.34)}.night .app{filter:brightness(.8)}.deep-night .shade{background:rgba(0,0,0,.67)}.deep-night .app{filter:brightness(.5)}
 @media(max-height:700px){.sidebar{top:2%;bottom:2%;gap:8px}.card{padding:10px 15px;border-radius:15px}.heading{margin-bottom:7px}.weather-top{margin-bottom:7px}.weather-emoji{font-size:39px}.temp{font-size:40px}.weather-grid,.forecast-row{font-size:12px}.forecast{margin-top:7px;padding-top:7px;gap:3px}.day{min-height:23px}.events{gap:5px}}
@@ -52,10 +52,10 @@
 @media(prefers-reduced-motion:reduce){#photos img{transition:none}}
 </style>
 </head>
-<body><div id="photos"></div><div class="shade"></div><main class="app" id="app"><section class="clock"><div class="clock-time" id="time">--:--</div><div class="date" id="date"></div><div class="lunar" id="lunar"></div></section><aside class="sidebar"><section class="card"><div class="heading"><span>🌤️ 澳門天氣</span><span class="muted" id="updated">載入中</span></div><div class="weather-top"><div class="weather-emoji" id="weather-icon">⛅</div><div><div class="temp" id="temp">--°</div><div class="desc" id="description">正在取得天氣…</div></div></div><div class="weather-grid"><div class="metric"><span>最高</span><span id="high">--</span></div><div class="metric"><span>最低</span><span id="low">--</span></div><div class="metric"><span>濕度</span><span id="humidity">--</span></div><div class="metric"><span>風速</span><span id="wind">--</span></div><div class="metric"><span>紫外線</span><span id="uv">--</span></div><div class="metric"><span>體感</span><span id="feels">--</span></div></div><div class="forecast" id="forecast"></div><div class="smg-warning" id="smg-warning">⚠️ 氣象局警告：查詢中…</div><div class="rain-hint" id="rain-hint">☂️ 降雨預報載入中</div></section><section class="card"><div class="heading"><span>📅 重要日子</span><span class="muted">最近 3 項</span></div><div class="events" id="events"></div><div class="agenda" id="agenda"></div></section><section class="card"><div class="cal-header"><span id="month"></span><span class="muted">今日高亮</span></div><div class="week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div class="days" id="days"></div></section></aside><div class="tip" id="tip">點一下空白位置可隱藏資訊 · V2.6</div></main>
+<body><div id="photos"></div><div class="shade"></div><main class="app" id="app"><section class="clock"><div class="clock-time" id="time">--:--</div><div class="date" id="date"></div><div class="lunar" id="lunar"></div></section><aside class="sidebar"><section class="card"><div class="heading"><span>🌤️ 澳門天氣</span><span class="muted" id="updated">載入中</span></div><div class="weather-top"><div class="weather-emoji" id="weather-icon">⛅</div><div><div class="temp" id="temp">--°</div><div class="desc" id="description">正在取得天氣…</div></div></div><div class="weather-grid"><div class="metric"><span>最高</span><span id="high">--</span></div><div class="metric"><span>最低</span><span id="low">--</span></div><div class="metric"><span>濕度</span><span id="humidity">--</span></div><div class="metric"><span>風速</span><span id="wind">--</span></div><div class="metric"><span>紫外線</span><span id="uv">--</span></div><div class="metric"><span>體感</span><span id="feels">--</span></div></div><div class="forecast" id="forecast"></div><div class="smg-warning" id="smg-warning">⚠️ 氣象局警告：查詢中…</div><div class="rain-hint" id="rain-hint">☂️ 降雨預報載入中</div></section><section class="card"><div class="heading"><span>📅 重要日子</span><span class="muted">最近 3 項</span></div><div class="events" id="events"></div><div class="agenda" id="agenda"></div></section><section class="card"><div class="cal-header"><span id="month"></span><span class="muted">今日高亮</span></div><div class="week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div class="days" id="days"></div></section></aside><div class="tip" id="tip">點一下空白位置可隱藏資訊 · V2.6.1</div></main>
 <script>
 'use strict';
-const APP_VERSION='2.6';
+const APP_VERSION='2.6.1';
 const CFG={timezone:'Asia/Macau',photoInterval:15000,photoFocus:[
 // 每張相的焦點（水平%, 垂直%）；可按實際相片調整，避免人物被裁切
 '48% 50%','50% 50%','50% 50%','50% 50%','50% 50%','50% 50%','50% 50%','50% 50%'
@@ -150,24 +150,29 @@ function renderRainHint(data,p){
  const max=Math.max(...a);const mm=rain.length?Math.max(...rain):0;
  $('rain-hint').textContent=max>=65||mm>=1?'☔ 未來約 2 小時有較高降雨機會（最高 '+max+'%）':max>=35?'🌦️ 未來約 2 小時有降雨機會（最高 '+max+'%）':'☂️ 未來約 2 小時降雨機會偏低（最高 '+max+'%）';
 }
-// Official SMG RSS may block cross-origin browser requests (CORS).
-// NEVER interpret a failed request as "no active warnings".
+// GitHub Actions retrieves official SMG RSS; this JSON is same-origin.
+// RSS headlines are announcements, not independently verified active signals.
 async function fetchSmgWarnings(){
  const el=$('smg-warning');
  const official='https://www.smg.gov.mo/';
- const fallback=()=>{el.classList.remove('alert');el.innerHTML='⚠️ 氣象局警告未能自動核實 · <a href="'+official+'" target="_blank" rel="noopener noreferrer">查看官方警告</a>';scheduleSidebarFit();};
- const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),9000);
+ const link='<a href="'+official+'" target="_blank" rel="noopener noreferrer">查看氣象局</a>';
+ const fallback=()=>{el.classList.remove('alert');el.innerHTML='⚠️ 氣象警告狀態無法核實 · '+link;scheduleSidebarFit();};
  try{
-  const res=await fetch('https://rss.smg.gov.mo/e_WSignal_rss.xml',{signal:ctrl.signal,cache:'no-store'});
-  if(!res.ok)throw new Error('SMG RSS HTTP '+res.status);
-  const xml=new DOMParser().parseFromString(await res.text(),'application/xml');
-  if(xml.querySelector('parsererror'))throw new Error('Invalid RSS');
-  const items=[...xml.querySelectorAll('item')];
-  // RSS entries may be historic. Without an official active-state field,
-  // avoid presenting old headlines as live active warnings.
+  const r=await fetch('./smg_warnings.json?t='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw Error('HTTP '+r.status);
+  const d=await r.json();
+  const age=Date.now()-Date.parse(d.checked_at||'');
+  if(d.status!=='fetched'||!Number.isFinite(age)||age< -300000||age>45*60000){fallback();return;}
+  const headlines=Array.isArray(d.items)?d.items.filter(x=>typeof x.title==='string').slice(0,2):[];
   el.classList.remove('alert');
-  el.innerHTML='⚠️ 氣象局警告資訊 · <a href="'+official+'" target="_blank" rel="noopener noreferrer">按此核實最新生效訊號</a>';
- }catch(e){fallback();}finally{clearTimeout(timer);scheduleSidebarFit();}
+  el.textContent='';
+  const head=document.createElement('span');
+  head.textContent=headlines.length?'⚠️ 氣象局最新公告（未核實是否生效）：':'⚠️ 已取得氣象局 RSS，但無法確認生效警告';
+  el.appendChild(head);
+  for(const item of headlines){const line=document.createElement('div');line.textContent='• '+item.title.slice(0,90);el.appendChild(line);}
+  const a=document.createElement('a');a.href=official;a.target='_blank';a.rel='noopener noreferrer';a.textContent='查看官方生效警告';el.appendChild(document.createTextNode(' · '));el.appendChild(a);
+  scheduleSidebarFit();
+ }catch(e){fallback();}
 }
 
 // Check the deployed index.html every 6 hours. Reload only on an actual version change.
