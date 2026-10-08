@@ -152,28 +152,78 @@ function renderRainHint(data,p){
 }
 // GitHub Actions retrieves official SMG RSS; this JSON is same-origin.
 // RSS headlines are announcements, not independently verified active signals.
+
 async function fetchSmgWarnings(){
- const el=$('smg-warning');
- const official='https://www.smg.gov.mo/';
- const link='<a href="'+official+'" target="_blank" rel="noopener noreferrer">查看氣象局</a>';
- const fallback=()=>{el.classList.remove('alert');el.innerHTML='⚠️ 氣象警告狀態無法核實 · '+link;scheduleSidebarFit();};
- try{
-  const r=await fetch('./smg_warnings.json?t='+Date.now(),{cache:'no-store'});
-  if(!r.ok)throw Error('HTTP '+r.status);
-  const d=await r.json();
-  const age=Date.now()-Date.parse(d.checked_at||'');
-  if(d.status!=='fetched'||!Number.isFinite(age)||age< -300000||age>45*60000){fallback();return;}
-  const headlines=Array.isArray(d.items)?d.items.filter(x=>typeof x.title==='string').slice(0,2):[];
-  el.classList.remove('alert');
-  el.textContent='';
-  const head=document.createElement('span');
-  head.textContent=headlines.length?'⚠️ 氣象局最新公告（未核實是否生效）：':'⚠️ 已取得氣象局 RSS，但無法確認生效警告';
-  el.appendChild(head);
-  for(const item of headlines){const line=document.createElement('div');line.textContent='• '+item.title.slice(0,90);el.appendChild(line);}
-  const a=document.createElement('a');a.href=official;a.target='_blank';a.rel='noopener noreferrer';a.textContent='查看官方生效警告';el.appendChild(document.createTextNode(' · '));el.appendChild(a);
-  scheduleSidebarFit();
- }catch(e){fallback();}
+  const el=$('smg-warning');
+  if(!el)return;
+
+  // Default: hide the entire warning area.
+  const hide=()=>{
+    el.classList.remove('alert');
+    el.replaceChildren();
+    el.style.display='none';
+    scheduleSidebarFit();
+  };
+
+  hide();
+
+  try{
+    const r=await fetch(
+      './smg_warnings.json?t='+Date.now(),
+      {cache:'no-store'}
+    );
+    if(!r.ok)throw Error('HTTP '+r.status);
+
+    const d=await r.json();
+    const age=Date.now()-Date.parse(d.checked_at||'');
+
+    // Never show stale or unverified warning data.
+    if(
+      !Number.isFinite(age) ||
+      age < -300000 ||
+      age > 45*60000
+    )return;
+
+    if(d.display_warnings!==true)return;
+    if(!Array.isArray(d.active_warnings))return;
+
+    const active=d.active_warnings.filter(w=>
+      w &&
+      w.state==='active' &&
+      typeof w.name==='string' &&
+      w.name.trim()
+    );
+
+    if(!active.length)return;
+
+    el.style.display='';
+    el.classList.add('alert');
+
+    const title=document.createElement('div');
+    title.textContent='⚠️ 澳門氣象局生效警告';
+    el.appendChild(title);
+
+    for(const w of active){
+      const line=document.createElement('div');
+      line.textContent='• '+w.name+
+        (w.description?'：'+w.description:'');
+      el.appendChild(line);
+    }
+
+    const link=document.createElement('a');
+    link.href='https://www.smg.gov.mo/';
+    link.target='_blank';
+    link.rel='noopener noreferrer';
+    link.textContent='查看氣象局官方資訊';
+    el.appendChild(link);
+
+    scheduleSidebarFit();
+
+  }catch(e){
+    hide();
+  }
 }
+
 
 // Check the deployed index.html every 6 hours. Reload only on an actual version change.
 // This cannot override an intermediary that ignores cache directives; versioned URL helps.
