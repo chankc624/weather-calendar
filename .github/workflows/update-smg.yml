@@ -1,0 +1,31 @@
+name: Update Macau SMG warnings
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: smg-warnings-update
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch official SMG RSS
+        run: python fetch_smg.py
+      - name: Commit latest status JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add smg_warnings.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update SMG warnings snapshot"
+            git push
+          fi
