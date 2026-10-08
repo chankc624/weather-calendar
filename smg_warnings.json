@@ -1,7 +1,12 @@
 {
   "source": "https://rss.smg.gov.mo/c_WSignal_rss.xml",
-  "checked_at": null,
-  "status": "unavailable",
+  "checked_at": "2026-10-08T01:57:11.224016+00:00",
+  "status": "fetched",
   "active_state": "unknown",
-  "items": []
+  "items": [
+    {
+      "title": "澳門於2026年10月04日23時30分發出之天氣警告",
+      "published": ""
+    }
+  ]
 }
