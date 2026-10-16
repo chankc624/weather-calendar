@@ -1,6 +1,6 @@
 {
   "source": "https://rss.smg.gov.mo/c_WSignal_rss.xml",
-  "checked_at": "2026-10-16T01:16:07.690418+00:00",
+  "checked_at": "2026-10-16T01:59:50.972907+00:00",
   "status": "fetched",
   "active_state": "unknown",
   "items": [
@@ -9,7 +9,7 @@
       "published": ""
     }
   ],
-  "xml_checked_at": "2026-10-16T09:16:07.690418+08:00",
+  "xml_checked_at": "2026-10-16T09:59:50.972907+08:00",
   "warnings": [
     {
       "name": "熱帶氣旋／颱風",
