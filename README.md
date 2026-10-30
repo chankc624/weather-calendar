@@ -1,6 +1,6 @@
 # weather-calendar
 
-澳門家庭天氣與日曆 dashboard，包含瀏覽器頁面及 Kindle 橫向圖片。
+澳門家庭天氣與日曆 dashboard，提供瀏覽器顯示頁面。
 
 ## 顯示入口
 
@@ -8,7 +8,6 @@
 | --- | --- |
 | [index.html](index.html) | 主 dashboard：相片輪播、時鐘、農曆、天氣、家庭日曆及重要日子 |
 | [v2/index.html](v2/index.html) | 另一版 Lenovo Home Dashboard；設定及更新邏輯與主頁獨立 |
-| [kindle/dashboard.png](kindle/dashboard.png) | 1448 × 1072 靜態圖片，由 Python 產生；不含時鐘或氣象警告 |
 
 ## 本機預覽
 
@@ -32,8 +31,6 @@ python3 -m http.server 8000 --bind 127.0.0.1
 | `v2/index.html` | 獨立版本頁面 |
 | `fetch_smg.py` | 讀取澳門氣象局 XML／RSS，寫入警告快照 |
 | `smg_warnings.json` | 自動產生的快照，不宜手動維護 |
-| `generate_kindle.py` | 讀取 Open-Meteo 並繪製 Kindle 圖片 |
-| `kindle/dashboard.png` | 自動產生的圖片 |
 | `test_smg_xml.py` | 顯示規則斷言及官方 XML 連線診斷 |
 | `test-warning.html` | 模擬警告顯示頁，不是真實氣象資訊 |
 | `.github/workflows/` | 自動更新及手動診斷工作流程 |
@@ -47,7 +44,6 @@ python3 -m http.server 8000 --bind 127.0.0.1
 | 主頁警告快照讀取 | 開啟頁面時及每 10 分鐘更新 |
 | 主頁版本檢查 | 開啟約 1 分鐘後，之後每 6 小時 |
 | SMG 快照產生 | GitHub Actions 每 15 分鐘排程 |
-| Kindle 圖片產生 | GitHub Actions 每小時排程 |
 
 GitHub Actions 的 cron 使用 UTC，排程可能延遲，並非準時服務保證。`v2/` 有自己的更新間隔，詳見[維護說明](docs/MAINTENANCE.md)。
 
