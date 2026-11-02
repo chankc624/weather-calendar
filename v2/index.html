@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark light"><title>Lenovo Home Dashboard V2.2.9 · 天氣連線版</title>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark light"><title>Lenovo Home Dashboard V2.2.10 · 天氣連線版</title>
 <style>
 :root{font-family:system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;color-scheme:dark;--text:#f4f7ff;--muted:#bacbe2;--card:rgba(10,29,54,.74);--border:rgba(255,255,255,.16);--accent:#f5d48d;--bg1:#0c1c32;--bg2:#284965}
 *{box-sizing:border-box}html,body{margin:0;min-width:0}body{color:var(--text);background:linear-gradient(125deg,var(--bg1),var(--bg2));min-height:100vh;overflow-x:hidden}body.day{--bg1:#355879;--bg2:#8495a5;--card:rgba(13,40,65,.7)}body.night{--bg1:#091325;--bg2:#233b59}body.deep-night{--bg1:#070e1b;--bg2:#15273f}button{font:inherit;cursor:pointer}.demo{position:fixed;z-index:10;top:12px;left:14px;background:#f5d48d;color:#17243a;border-radius:9px;padding:7px 12px;font-size:12px;font-weight:800;letter-spacing:.07em;box-shadow:0 4px 20px #0004}.layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(350px,.85fr);gap:18px;padding:54px 24px 22px;min-height:100vh;max-width:1920px;margin:auto}.left{display:flex;flex-direction:column;min-width:0;gap:16px}.hero{position:relative;min-height:320px;flex:1;display:flex;flex-direction:column;justify-content:end;overflow:hidden;border-radius:24px;padding:clamp(24px,4vw,56px);background:linear-gradient(130deg,#1c4565,#49657b)}.slides{position:absolute;inset:0;pointer-events:none}.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s;background:linear-gradient(120deg,#1b4262,#466b7a 55%,#6b7187)}.slide:nth-child(2){background:linear-gradient(135deg,#17314d,#3f536f 50%,#7b6d85)}.slide:nth-child(3){background:linear-gradient(125deg,#1e4257,#426b69 55%,#8b8070)}.slide.active{opacity:1}.hero-content{z-index:1;text-shadow:0 2px 14px #06101c99}.eyebrow{letter-spacing:.15em;font-size:13px;color:#e9eff8}.clock{font-weight:250;letter-spacing:-.055em;font-variant-numeric:tabular-nums;font-size:clamp(78px,10vw,160px);line-height:1.04}.date{font-size:clamp(18px,2vw,28px);margin-top:12px}.lunar{font-size:clamp(16px,1.6vw,22px);margin-top:7px;color:#f5e9d0}.hero-footer{display:flex;gap:8px;align-items:center;margin-top:24px;flex-wrap:wrap}.pill{background:#ffffff24;border:1px solid #ffffff45;color:white;border-radius:99px;padding:7px 12px;font-size:12px}.pill:focus-visible{outline:3px solid var(--accent)}.note{font-size:12px;color:var(--muted)}.left-bottom{display:grid;grid-template-columns:1fr 1fr;gap:16px}.right{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:start;min-width:0}.card{min-width:0;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:20px;box-shadow:0 10px 28px #07132420;backdrop-filter:blur(12px)}.span2{grid-column:span 2}h2{font-size:17px;font-weight:650;margin:0 0 14px;display:flex;align-items:center;justify-content:space-between;gap:8px}.tag{font-size:11px;background:#f5d48d;color:#25334b;border-radius:6px;padding:4px 7px;font-weight:800;white-space:nowrap}.weather-main{display:flex;gap:14px;align-items:center}.weather-symbol{font-size:50px}.temp{font-size:clamp(48px,5vw,72px);font-weight:350;line-height:1.1}.subtle{color:var(--muted);font-size:13px}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:15px}.metric{background:#ffffff12;border-radius:10px;padding:10px 8px;font-size:12px}.metric strong{display:block;font-size:16px;margin-top:5px;color:#fff}.forecast{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.forecast-item{background:#ffffff12;padding:9px 5px;border-radius:9px;text-align:center;font-size:12px}.forecast-item strong{display:block;margin:4px 0}.rows{display:grid;gap:10px}.item{display:flex;gap:12px;align-items:start;justify-content:space-between;border-bottom:1px solid #ffffff18;padding-bottom:9px;font-size:14px}.item:last-child{border:0;padding-bottom:0}.item strong{white-space:nowrap;color:var(--accent);font-variant-numeric:tabular-nums}.item .subtle{margin-top:4px}.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px}.calendar-head h2{margin:0}.calendar-controls{display:flex;gap:5px}.cal-btn{border:1px solid #ffffff35;background:#ffffff12;color:var(--text);border-radius:8px;min-width:34px;height:32px}.week,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));text-align:center;gap:3px}.week{font-size:12px;color:var(--muted);margin-bottom:7px}.day{padding:8px 0;border-radius:9px;font-size:13px;font-variant-numeric:tabular-nums}.day.other{opacity:.3}.day.today{background:var(--accent);color:#1c2b3f;font-weight:800}.day.selected{outline:1px solid var(--accent)}#warning[hidden]{display:none!important}.warning{background:#5e342e;border-radius:10px;padding:10px;margin-top:12px}.foot{font-size:11px;color:var(--muted);margin-top:10px}.status{display:flex;align-items:center;gap:6px}.dot{width:7px;height:7px;background:#93d6ba;border-radius:50%}
@@ -171,7 +171,7 @@ h2{font-size:20px;line-height:1.35;margin-bottom:15px;font-weight:750}.tag{font-
 'use strict';
 // CODEX-PROJECT-02 V2 DEMO. Sanitized functional reconstruction, NOT a line-by-line copy of V2.6.1.
 // Family schedule contains only dates explicitly authorized by the user. Weather uses public Open-Meteo without credentials.
-const VERSION='2.2.9-hk-mo-holidays-layout';
+const VERSION='2.2.10-hk-mo-holidays-layout';
 const TZ='Asia/Macau';
 const MOCK_WEATHER=Object.freeze({temp:25,description:'多雲 · 固定示例',high:28,low:22,humidity:72,wind:12,uv:4,feels:26,forecast:[['明日','⛅','22–28°'],['後日','🌦️','23–27°'],['第三日','☀️','24–29°']]});
 const EVENTS=Object.freeze([
@@ -182,7 +182,13 @@ const EVENTS=Object.freeze([
 ]);
 const AGENDA=Object.freeze([
  {date:'2026-10-30',time:'',title:'Charlotte 學校變裝日'},
- {date:'2026-10-31',time:'10:00–10:10',title:'Charlotte 學校家長諮詢（同日家長捐款日）'}
+ {date:'2026-10-31',time:'10:00–10:10',title:'Charlotte 學校家長諮詢（同日家長捐款日）'},
+ {date:'2026-11-04',time:'10:00–14:00',title:'Gigi 山頂醫院產檢'},
+ {date:'2026-11-07',time:'',title:'Charlotte 學校中文老師家長諮詢'},
+ {date:'2026-11-13',time:'',title:'Charlotte 學校 Wellbeing Holiday'},
+ {date:'2026-11-21',time:'',title:'Charlotte 學校 Open Day'},
+ {date:'2026-12-05',time:'',title:'Charlotte 學校表演日'},
+ {date:'2026-12-18',time:'',title:'Charlotte 學校聖誕慶祝'}
 ]);
 const HK_HOLIDAYS=Object.freeze({"2026-10-01":"國慶日","2026-10-19":"重陽節翌日","2026-12-25":"聖誕節","2026-12-26":"聖誕節後第一個工作日","2027-01-01":"元旦","2027-02-06":"農曆年初一","2027-02-08":"農曆年初三","2027-02-09":"農曆年初四（補假）","2027-03-26":"耶穌受難節","2027-03-27":"耶穌受難節翌日","2027-03-29":"復活節星期一","2027-04-05":"清明節","2027-05-01":"勞動節","2027-05-13":"佛誕","2027-06-09":"端午節","2027-07-01":"香港特別行政區成立紀念日","2027-09-16":"中秋節翌日","2027-10-01":"國慶日","2027-10-08":"重陽節","2027-12-25":"聖誕節","2027-12-27":"聖誕節後第一個周日"});
 const MO_HOLIDAYS=Object.freeze({"2026-10-01":"國慶日","2026-10-02":"國慶日翌日","2026-10-18":"重陽節","2026-11-02":"追思節","2026-12-08":"聖母無原罪瞻禮","2026-12-20":"澳門特別行政區成立紀念日","2026-12-22":"冬至","2026-12-24":"聖誕節前日","2026-12-25":"聖誕節","2027-01-01":"元旦","2027-02-06":"農曆正月初一","2027-02-07":"農曆正月初二","2027-02-08":"農曆正月初三","2027-03-26":"耶穌受難日","2027-03-27":"復活節前日","2027-04-05":"清明節","2027-05-01":"勞動節","2027-05-13":"佛誕節","2027-06-09":"端午節","2027-09-16":"中秋節翌日","2027-10-01":"國慶日","2027-10-02":"國慶日翌日","2027-10-08":"重陽節","2027-11-02":"追思節","2027-12-08":"聖母無原罪瞻禮","2027-12-20":"澳門特別行政區成立紀念日","2027-12-22":"冬至","2027-12-24":"聖誕節前日","2027-12-25":"聖誕節"});
@@ -359,12 +365,12 @@ async function refreshWeather(){
   const parsed=parseWeather(await response.json());
   lastSuccessfulWeather=parsed.weather;lastSuccessfulAt=new Date();lastWeatherModelTime=parsed.modelTime;
   renderWeather(parsed.weather);setWeatherStatus('模型最新 · Open-Meteo','公開免 Key 模型資料 · 資料時間：'+macauStamp(parsed.modelTime));
-  $('weatherNotice').textContent='來源：Open-Meteo（CC BY 4.0，非官方實測）· 警告未接入並隱藏';
+  $('weatherNotice').textContent='來源：Open-Meteo（CC BY 4.0，非官方實測）· 警告已接入，無警告時隱藏';
  }catch(error){
   const reason=error?.name==='AbortError'?'連線逾時':(error?.message||'網絡錯誤');
   if(lastSuccessfulWeather){renderWeather(lastSuccessfulWeather);setWeatherStatus('未能取得 · 舊資料','最新連線失敗（'+reason+'）；顯示上次成功取得嘅模型資料，非即時。資料時間：'+macauStamp(lastWeatherModelTime));}
   else{renderWeather(MOCK_WEATHER);setWeatherStatus('未能取得 · 模擬 DEMO','最新連線失敗（'+reason+'）；以下全部係模擬天氣，絕非實時。');}
-  $('weatherNotice').textContent='無法確認最新天氣；請勿以模擬或舊資料作安全決策。警告未接入並隱藏。';
+  $('weatherNotice').textContent='無法確認最新天氣；請勿以模擬或舊資料作安全決策。警告已接入，無警告時隱藏。';
  }finally{clearTimeout(timer);weatherLoading=false;$('retryWeather').disabled=false;}
 }
 $('retryWeather').addEventListener('click',refreshWeather);
