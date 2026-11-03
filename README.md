@@ -58,3 +58,7 @@ GitHub Actions 的 cron 使用 UTC，排程可能延遲，並非準時服務保�
 - 本 repository 為公開；加入相片、生日或行程前，請考慮資料會否公開。
 
 個人化、部署、手動更新及故障排查見[維護說明](docs/MAINTENANCE.md)。
+
+## Kindle 雲端圖片
+
+Kindle 專用圖片不顯示時鐘、時間戳或澳門氣象警告。合併後 GitHub Actions 每小時第 17 分鐘產生 1448×1072 灰階圖片至 `kindle/dashboard.png`；排程可能延遲。此功能只在雲端產圖，不會安裝或改動 Kindle。電腦預覽、字型、資料失效處理及設備部署前限制見 [Kindle 說明](docs/KINDLE.md)。
