@@ -1,0 +1,49 @@
+name: Update Kindle Dashboard
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: kindle-dashboard-update
+  cancel-in-progress: false
+jobs:
+  render:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install fonts and Pillow
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-cjk
+          python -m pip install 'Pillow>=10,<13'
+      - name: Generate Kindle PNG
+        run: python generate_kindle.py
+      - name: Validate image
+        run: |
+          python - <<'PY'
+          from PIL import Image
+          with Image.open('kindle/dashboard.png') as image:
+              assert image.size == (1448, 1072), image.size
+              assert image.mode == 'L', image.mode
+              image.load()
+          PY
+      - name: Publish image if changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add kindle/dashboard.png
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update Kindle dashboard image'
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then exit 0; fi
+            done
+            exit 1
