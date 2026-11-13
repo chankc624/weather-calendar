@@ -1,15 +1,15 @@
 {
   "source": "https://rss.smg.gov.mo/c_WSignal_rss.xml",
-  "checked_at": "2026-11-13T18:33:13.610180+00:00",
+  "checked_at": "2026-11-13T23:53:44.560048+00:00",
   "status": "fetched",
-  "active_state": "active",
+  "active_state": "unknown",
   "items": [
     {
-      "title": "澳門於2026年11月14日02時15分發出之天氣警告",
+      "title": "澳門於2026年11月14日05時30分發出之天氣警告",
       "published": ""
     }
   ],
-  "xml_checked_at": "2026-11-14T02:33:13.610180+08:00",
+  "xml_checked_at": "2026-11-14T07:53:44.560048+08:00",
   "warnings": [
     {
       "name": "熱帶氣旋／颱風",
@@ -24,12 +24,12 @@
     {
       "name": "暴雨",
       "source": "https://xml.smg.gov.mo/c_rainstorm.xml",
-      "state": "active",
-      "status": "1",
-      "inforce": "Yellow",
-      "warncode": "Yellow",
-      "issued_at": "2026-11-14 02:15",
-      "description": "黃色暴雨警告信號於2026年11月14日02時15分發出。\n預料雨勢將會增強。低窪地區有水浸。"
+      "state": "inactive",
+      "status": "0",
+      "inforce": "0",
+      "warncode": "NIL",
+      "issued_at": "2026-11-14 05:30",
+      "description": "現時沒有暴雨警告信號。"
     },
     {
       "name": "強烈季候風",
@@ -72,18 +72,7 @@
       "description": "現時沒有海嘯警告信號。"
     }
   ],
-  "active_warnings": [
-    {
-      "name": "暴雨",
-      "source": "https://xml.smg.gov.mo/c_rainstorm.xml",
-      "state": "active",
-      "status": "1",
-      "inforce": "Yellow",
-      "warncode": "Yellow",
-      "issued_at": "2026-11-14 02:15",
-      "description": "黃色暴雨警告信號於2026年11月14日02時15分發出。\n預料雨勢將會增強。低窪地區有水浸。"
-    }
-  ],
-  "display_warnings": true,
+  "active_warnings": [],
+  "display_warnings": false,
   "verification_note": "Active warnings require a recent issued timestamp. Unknown status must not be interpreted as safe."
 }
